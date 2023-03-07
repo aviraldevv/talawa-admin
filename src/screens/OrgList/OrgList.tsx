@@ -18,6 +18,8 @@ import {
 import { CREATE_ORGANIZATION_MUTATION } from 'GraphQl/Mutations/mutations';
 import ListNavbar from 'components/ListNavbar/ListNavbar';
 import PaginationList from 'components/PaginationList/PaginationList';
+import debounce from 'utils/debounce';
+import convertToBase64 from 'utils/convertToBase64';
 
 function OrgList(): JSX.Element {
   const { t } = useTranslation('translation', { keyPrefix: 'orgList' });
@@ -31,9 +33,9 @@ function OrgList(): JSX.Element {
     ispublic: true,
     visible: false,
     location: '',
-    tags: '',
+    image: '',
   });
-  const [searchByName, setSearchByName] = useState('');
+  const [, setSearchByName] = useState('');
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -70,11 +72,9 @@ function OrgList(): JSX.Element {
   const CreateOrg = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { name, descrip, location, visible, ispublic, tags } = formState;
+    const { name, descrip, location, visible, ispublic, image } = formState;
 
     try {
-      const tagsArray = tags.split(',').map((tag) => tag.trim());
-
       const { data } = await create({
         variables: {
           name: name,
@@ -82,7 +82,7 @@ function OrgList(): JSX.Element {
           location: location,
           visibleInSearch: visible,
           isPublic: ispublic,
-          tags: tagsArray,
+          image: image,
         },
       });
 
@@ -96,8 +96,9 @@ function OrgList(): JSX.Element {
           ispublic: true,
           visible: false,
           location: '',
-          tags: '',
+          image: '',
         });
+        setmodalIsOpen(false);
       }
     } catch (error: any) {
       /* istanbul ignore next */
@@ -149,12 +150,16 @@ function OrgList(): JSX.Element {
       });
     }
   };
-
+  let dataRevOrg;
+  const debouncedHandleSearchByName = debounce(handleSearchByName);
+  if (data) {
+    dataRevOrg = data.organizationsConnection.slice().reverse();
+  }
   return (
     <>
       <ListNavbar />
       <Row>
-        <Col sm={3}>
+        <Col xl={3}>
           <div className={styles.sidebar}>
             <div className={styles.sidebarsticky}>
               <h6 className={styles.logintitle}>{t('you')}</h6>
@@ -167,24 +172,36 @@ function OrgList(): JSX.Element {
               <p>
                 {t('designation')}:<span> {data_2?.user.userType}</span>
               </p>
-              <p>
-                {t('email')}:<span> {data_2?.user.email}</span>
-              </p>
+              <div className={styles.userEmail}>
+                {t('email')}:
+                <p>
+                  {data_2?.user.email.substring(
+                    0,
+                    data_2?.user.email.length / 2
+                  )}
+                  <span>
+                    {data_2?.user.email.substring(
+                      data_2?.user.email.length / 2,
+                      data_2?.user.email.length
+                    )}
+                  </span>
+                </p>
+              </div>
 
               <h6 className={styles.searchtitle}>{t('searchByName')}</h6>
               <input
                 type="name"
                 id="orgname"
-                placeholder="Enter Name"
+                placeholder={t('enterName')}
                 data-testid="searchByName"
                 autoComplete="off"
                 required
-                onChange={handleSearchByName}
+                onChange={debouncedHandleSearchByName}
               />
             </div>
           </div>
         </Col>
-        <Col sm={8}>
+        <Col xl={8}>
           <div className={styles.mainpageright}>
             <Row className={styles.justifysp}>
               <p className={styles.logintitle}>{t('organizationList')}</p>
@@ -201,7 +218,7 @@ function OrgList(): JSX.Element {
             <div className={styles.list_box}>
               {data &&
                 (rowsPerPage > 0
-                  ? data.organizationsConnection.slice(
+                  ? dataRevOrg.slice(
                       page * rowsPerPage,
                       page * rowsPerPage + rowsPerPage
                     )
@@ -223,7 +240,7 @@ function OrgList(): JSX.Element {
                         image={datas.image}
                         admins={datas.admins}
                         members={datas.members.length}
-                        createdDate={dayjs(parseInt(datas?.createdAt)).format(
+                        createdDate={dayjs(datas?.createdAt).format(
                           'DD/MM/YYYY'
                         )}
                         orgName={datas.name}
@@ -276,7 +293,7 @@ function OrgList(): JSX.Element {
               <input
                 type="name"
                 id="orgname"
-                placeholder="Enter Name"
+                placeholder={t('enterName')}
                 data-testid="modalOrganizationName"
                 autoComplete="off"
                 required
@@ -292,7 +309,7 @@ function OrgList(): JSX.Element {
               <input
                 type="descrip"
                 id="descrip"
-                placeholder="Enter Description"
+                placeholder={t('description')}
                 autoComplete="off"
                 required
                 value={formState.descrip}
@@ -307,7 +324,7 @@ function OrgList(): JSX.Element {
               <input
                 type="text"
                 id="location"
-                placeholder="Enter Location"
+                placeholder={t('location')}
                 autoComplete="off"
                 required
                 value={formState.location}
@@ -318,21 +335,7 @@ function OrgList(): JSX.Element {
                   });
                 }}
               />
-              <label htmlFor="tags">{t('tags')}</label>
-              <input
-                type="text"
-                id="tags"
-                placeholder="Enter Tags"
-                autoComplete="off"
-                required
-                value={formState.tags}
-                onChange={(e) => {
-                  setFormState({
-                    ...formState,
-                    tags: e.target.value,
-                  });
-                }}
-              />
+
               <div className={styles.checkboxdiv}>
                 <div className={styles.dispflex}>
                   <label htmlFor="ispublic">{t('isPublic')}:</label>
@@ -371,7 +374,15 @@ function OrgList(): JSX.Element {
                   name="photo"
                   type="file"
                   multiple={false}
-                  //onChange=""
+                  onChange={async (e) => {
+                    const file = e.target.files?.[0];
+                    if (file)
+                      setFormState({
+                        ...formState,
+                        image: await convertToBase64(file),
+                      });
+                  }}
+                  data-testid="organisationImage"
                 />
               </label>
               <button

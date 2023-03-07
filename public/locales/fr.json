@@ -2,12 +2,7 @@
   "loginPage": {
     "title": "Administrateur Talawa",
     "talawa_portal": "Portail Talawa",
-    "talawa_description": {
-      "part1": "C'est",
-      "part2": " Portail de gestion administrative Talawa ",
-      "part3": "pour la gestion transparente de l'application Talawa."
-    },
-    "fromPalisadoes": "DE PALISADES",
+    "fromPalisadoes": "Une application open source par les volontaires de la Fondation Palissades",
     "login": "Connexion",
     "register": "S'inscrire",
     "firstName": "Prénom",
@@ -16,7 +11,9 @@
     "password": "Mot de passe",
     "atleast_8_char_long": "Au moins 8 caractères",
     "confirmPassword": "Confirmez le mot de passe",
-    "forgotPassword": "Mot de passe oublié ?"
+    "forgotPassword": "Mot de passe oublié ?",
+    "enterEmail": "entrez l'e-mail",
+    "enterPassword": "Entrer le mot de passe"
   },
   "listNavbar": {
     "talawa_portal": "Portail Talawa",
@@ -35,10 +32,10 @@
     "createOrganization": "Créer une organisation",
     "description": "La description",
     "location": "Emplacement",
-    "tags": "Balises (séparées par des virgules (,))",
     "isPublic": "Est publique",
     "visibleInSearch": "Visible dans la recherche",
-    "displayImage": "Afficher l'image"
+    "displayImage": "Afficher l'image",
+    "enterName": "Entrez le nom"
   },
   "superDashListCard": {
     "created": "Établi",
@@ -59,7 +56,8 @@
     "roles_userType": "Rôle/Type d'utilisateur",
     "admin": "ADMIN",
     "superAdmin": "SUPERADMIN",
-    "user": "UTILISATEUR"
+    "user": "UTILISATEUR",
+    "enterName": "Entrez le nom"
   },
   "requests": {
     "title": "Demandes Talawa",
@@ -68,7 +66,8 @@
     "name": "Nom",
     "email": "E-mail",
     "accept": "Accepter",
-    "reject": "Rejeter"
+    "reject": "Rejeter",
+    "enterName": "Entrez le nom"
   },
   "adminNavbar": {
     "talawa_portal": "Portail Talawa",
@@ -80,6 +79,7 @@
     "Block/Unblock": "Bloquer/Débloquer",
     "Plugins": "Plugins",
     "Plugin Store": "Magasin de plugins",
+    "allOrganizations": "Toutes les organisations",
     "notification": "Notification",
     "settings": "Réglages",
     "language": "Langue",
@@ -94,8 +94,6 @@
     "title": "Tableau de bord Talawa",
     "location": "Emplacement",
     "about": "À propos de",
-    "tags": "Mots clés",
-    "noTags": "Pas de balises",
     "deleteThisOrganization": "Supprimer cette organisation",
     "statistics": "Statistiques",
     "members": "Membres",
@@ -116,7 +114,9 @@
     "filterByEvent": "Filtrer par événement",
     "members": "Membres",
     "admins": "Administrateurs",
-    "users": "Utilisateurs"
+    "users": "Utilisateurs",
+    "searchName": "Entrez le nom",
+    "searchevent": "Entrez l'événement"
   },
   "userListCard": {
     "joined": "Inscrit",
@@ -141,6 +141,7 @@
   "organizationEvents": {
     "title": "Événements Talawa",
     "filterByTitle": "Filtrer par titre",
+    "filterByLocation": "Filtrer par l'emplacement",
     "filterByDescription": "Filtrer par Description",
     "events": "Événements",
     "addEvent": "Ajouter un évènement",
@@ -156,7 +157,11 @@
     "recurringEvent": "Événement récurrent",
     "isPublic": "Est publique",
     "isRegistrable": "Est enregistrable",
-    "createEvent": "Créer un évènement"
+    "createEvent": "Créer un évènement",
+    "enterFilter": "Entrez le filtre",
+    "enterTitle": "Entrez le titre",
+    "enterDescrip": "Entrez la description",
+    "eventLocation": "Entrez l'emplacement"
   },
   "eventListCard": {
     "location": "Emplacement",
@@ -189,7 +194,11 @@
     "information": "Informations",
     "image": "Image",
     "video": "Vidéo",
-    "addPost": "Ajouter un article"
+    "addPost": "Ajouter un article",
+    "searchTitle": "Rechercher par titre",
+    "searchText": "Rechercher par texte",
+    "ptitle": "Titre de l'article",
+    "postDes": "De quoi parlez-vous ?"
   },
   "orgPostCard": {
     "author": "Auteur",
@@ -215,7 +224,8 @@
     "email": "E-mail",
     "block_unblock": "Bloquer/Débloquer",
     "unblock": "Débloquer",
-    "block": "Bloquer"
+    "block": "Bloquer",
+    "orgName": "Entrez le nom"
   },
   "forgotPassword": {
     "title": "Mot de passe oublié Talawa",
@@ -226,7 +236,9 @@
     "enterNewPassword": "Entrez un nouveau mot de passe",
     "cofirmNewPassword": "Confirmer le nouveau mot de passe",
     "changePassword": "Changer le mot de passe",
-    "backToHome": "De retour à la maison"
+    "backToHome": "De retour à la maison",
+    "userOtp": "par exemple. 12345",
+    "password": "Mot de passe"
   },
   "pageNotFound": {
     "title": "404 introuvable",
@@ -240,7 +252,9 @@
     "filterByName": "Filtrer par nom",
     "filterByTransId": "Filtrer par Trans. ID",
     "recentStats": "Statistiques récentes",
-    "contribution": "Contribution"
+    "contribution": "Contribution",
+    "orgname": "Entrez le nom",
+    "searchtransaction": "Saisir l'identifiant de la transaction"
   },
   "contriStats": {
     "recentContribution": "Contribution récente",
@@ -266,7 +280,7 @@
     "lastName": "Nom de famille",
     "email": "E-mail",
     "password": "Mot de passe",
-    "appLanguageCode": "Code de langue de l'application",
+    "appLanguageCode": "Langue par défaut",
     "userType": "Type d'utilisateur",
     "admin": "Administrateur",
     "superAdmin": "Super administrateur",
@@ -285,12 +299,40 @@
   "orgUpdate": {
     "name": "Nom",
     "description": "La description",
-    "creator": "Créateur",
-    "apiUrl": "URL de l'API",
+    "location": "emplacement",
     "displayImage": "Afficher l'image",
     "isPublic": "Est publique",
     "isRegistrable": "Est enregistrable",
     "saveChanges": "Sauvegarder les modifications",
-    "cancel": "Annuler"
+    "cancel": "Annuler",
+    "enterNameOrganization": "Entrez le nom de l'organisation"
+  },
+  "addOnRegister": {
+    "addNew": "Ajouter nouveau",
+    "addPlugin": "Ajouter un plug-in",
+    "pluginName": "Nom du plug-in",
+    "creatorName": "Creator Name",
+    "pluginDesc": "Description du plug-in",
+    "close": "Fermer",
+    "register": "Enregistrer",
+    "pName": "Ex : Dons",
+    "cName": "Ex: Jean Doe",
+    "pDesc": "Ce plugin active l'interface utilisateur pour"
+  },
+  "addOnStore": {
+    "searchName": "Ex:Des dons ",
+    "enable": "Activé",
+    "disable": "Désactivé",
+    "pHeading": "Plugins",
+    "install": "Installée",
+    "available": "Disponible",
+    "pMessage": "Le plugin n'existe pas",
+    "filter": "Filtres",
+    "search": "recherche"
+  },
+  "addOnEntry": {
+    "enable": "Activé",
+    "install": "Installer",
+    "uninstall": "désinstaller"
   }
 }

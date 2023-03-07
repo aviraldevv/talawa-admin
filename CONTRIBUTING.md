@@ -12,9 +12,9 @@ If you are new to contributing to open source, please read the Open Source Guide
     * [Issues](#issues)
     * [Pull Requests](#pull-requests)
     * [Branching Strategy](#branching-strategy)
+    * [Conflict Resolution](#conflict-resolution)
 * [Contributing Code](#contributing-code)
 * Internships
-    * [GSoC](#gsoc)
 * [Community](#community)
 
 ## Code of Conduct
@@ -45,11 +45,11 @@ We utilize GitHub issues and pull requests to keep track of issues and contribut
 
 #### Issues
 
-Make sure you are following [issue report guidelines](issue-guidelines.md) available here before creating any new issues on Talawa Admin project.
+Make sure you are following [issue report guidelines](ISSUE_GUIDELINES.md) available here before creating any new issues on Talawa Admin project.
 
 #### Pull Requests
 
-[Pull Request guidelines](PR-guidelines.md) is best resource to follow to start working on open issues.
+[Pull Request guidelines](PR_GUIDELINES.md) is best resource to follow to start working on open issues.
 
 #### Branching Strategy
 
@@ -58,6 +58,16 @@ For Talawa Admin, we had employed the following branching strategy to simplify t
 - `develop`: For unstable code and bug fixing
 - `alpha-x.x.x`: for stability teesting
 - `master`: Where the stable production ready code lies
+
+#### Conflict Resolution
+
+When multiple developers are working on issues there is bound to be a conflict of interest (not to be confused with git conflicts) among issues, PRs or even ideas. Usually these conflicts are resolved in a **First Come First Serve** basis however there are certain exceptions to it.
+
+- In the cases where you feel your potential issues could be an extension or in conflict with other PRs it is important to ask the author of the PR in the slack channel or in their PRs or issues themselves why he/she did not write code for something that would require minimal effort on their part.
+- Based on basic courtesy, it is good practice to let the person who created a function apply and test that function when needed.
+- Last but not the least, communication is important make sure to talk to other contributors, in these cases, in slack channel or in a issue/PR thread.
+- As a last resort the Admins would be responsible for deciding how to resolve this conflict. 
+
 
 ### Contributing Code
 
@@ -119,11 +129,7 @@ The process of proposing a change to Talawa Admin can be summarized as:
 
 ## Internships
 
-We have internship partnerships with a number of organizations. See below for more details.
-
-### GSoC
-
-If you are participating in the Summer of Code, please read more about us and our processes [here](https://docs.talawa.io/docs/internships/gsoc/gsoc-introduction)
+If you are participating in any of the various internship programs we ar members of then please read the [introduction guides on our documentation website](https://docs.talawa.io/docs/).
 
 ## Community
 There are many ways to communicate with the community.

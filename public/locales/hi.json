@@ -1,12 +1,7 @@
 {
   "loginPage": {
     "title": "तलवा व्यवस्थापक",
-    "talawa_description": {
-      "part1": "ये है",
-      "part2": " तलवा प्रशासन प्रबंधन पोर्टल ",
-      "part3": "तलावा एप्लिकेशन के निर्बाध प्रबंधन के लिए।"
-    },
-    "fromPalisadoes": "पलिसाडो से",
+    "fromPalisadoes": "पलिसाडो के स्वयंसेवकों द्वारा एक खुला स्रोत अनुप्रयोग",
     "talawa_portal": "तलावा पोर्टल",
     "login": "लॉग इन करें",
     "register": "पंजीकरण करवाना",
@@ -16,7 +11,9 @@
     "password": "पासवर्ड",
     "atleast_8_char_long": "कम से कम 8 कैरेक्टर लंबा",
     "confirmPassword": "पासवर्ड की पुष्टि कीजिये",
-    "forgotPassword": "पासवर्ड भूल गए ?"
+    "forgotPassword": "पासवर्ड भूल गए ?",
+    "enterEmail": "ईमेल दर्ज करें",
+    "enterPassword": "पास वर्ड दर्ज करें"
   },
   "listNavbar": {
     "talawa_portal": "तलावा पोर्टल",
@@ -35,10 +32,10 @@
     "createOrganization": "संगठन बनाएं",
     "description": "विवरण",
     "location": "स्थान",
-    "tags": "टैग (अल्पविराम (,) अलग)",
     "isPublic": "सार्वजनिक है",
     "visibleInSearch": "खोज में दृश्यमान",
-    "displayImage": "प्रदर्शन छवि"
+    "displayImage": "प्रदर्शन छवि",
+    "enterName": "नाम दर्ज करें"
   },
   "superDashListCard": {
     "created": "बनाया था",
@@ -59,7 +56,8 @@
     "roles_userType": "भूमिका/उपयोगकर्ता-प्रकार",
     "admin": "व्यवस्थापक",
     "superAdmin": "सुपरएडमिन",
-    "user": "उपयोगकर्ता"
+    "user": "उपयोगकर्ता",
+    "enterName": "नाम दर्ज करें"
   },
   "requests": {
     "title": "तलवा अनुरोध",
@@ -68,7 +66,8 @@
     "name": "नाम",
     "email": "ईमेल",
     "accept": "स्वीकार करना",
-    "reject": "अस्वीकार"
+    "reject": "अस्वीकार",
+    "enterName": "नाम दर्ज करें"
   },
   "adminNavbar": {
     "talawa_portal": "तलावा पोर्टल",
@@ -80,6 +79,7 @@
     "Block/Unblock": "ब्लॉक/अनब्लॉक करें",
     "Plugins": "प्लगइन्स",
     "Plugin Store": "प्लगइन स्टोर",
+    "allOrganizations": "सभी संगठन",
     "notification": "अधिसूचना",
     "settings": "समायोजन",
     "language": "भाषा",
@@ -94,8 +94,6 @@
     "title": "तलावा डैशबोर्ड",
     "location": "स्थान",
     "about": "के बारे में",
-    "tags": "टैग",
-    "noTags": "कोई टैग नहीं",
     "deleteThisOrganization": "इस संगठन को हटाएं",
     "statistics": "सांख्यिकी",
     "members": "सदस्य",
@@ -116,7 +114,9 @@
     "filterByEvent": "इवेंट द्वारा फ़िल्टर करें",
     "members": "सदस्य",
     "admins": "व्यवस्थापक",
-    "users": "उपयोगकर्ता"
+    "users": "उपयोगकर्ता",
+    "searchName": "नाम दर्ज करें",
+    "searchevent": "घटना दर्ज करें"
   },
   "userListCard": {
     "joined": "में शामिल हो गए",
@@ -141,6 +141,7 @@
   "organizationEvents": {
     "title": "तलावा इवेंट्स",
     "filterByTitle": "शीर्षक द्वारा फ़िल्टर करें",
+    "filterByLocation": "स्थान के अनुसार फ़िल्टर करें",
     "filterByDescription": "विवरण द्वारा फ़िल्टर करें",
     "events": "आयोजन",
     "addEvent": "कार्यक्रम जोड़ें",
@@ -156,7 +157,11 @@
     "recurringEvent": "पुनरावर्ती ईवेंट",
     "isPublic": "सार्वजनिक है",
     "isRegistrable": "पंजीकरण योग्य है",
-    "createEvent": "कार्यक्रम बनाएँ"
+    "createEvent": "कार्यक्रम बनाएँ",
+    "enterFilter": "फ़िल्टर दर्ज करें",
+    "enterTitle": "शीर्षक दर्ज करें",
+    "enterDescrip": "विवरण दर्ज करें",
+    "eventLocation": "स्थान दर्ज करें"
   },
   "eventListCard": {
     "location": "स्थान",
@@ -189,7 +194,11 @@
     "information": "जानकारी",
     "image": "छवि",
     "video": "वीडियो",
-    "addPost": "पोस्ट जोड़ें"
+    "addPost": "पोस्ट जोड़ें",
+    "searchTitle": "शीर्षक से खोजें",
+    "searchText": "पाठ द्वारा खोजें",
+    "ptitle": "शीर्षक पोस्ट करें",
+    "postDes": "आपको किस बारे में बात करनी है?"
   },
   "orgPostCard": {
     "author": "लेखक",
@@ -215,7 +224,8 @@
     "email": "ईमेल",
     "block_unblock": "ब्लॉक/अनब्लॉक करें",
     "unblock": "अनब्लॉक करें",
-    "block": "अवरोध पैदा करना"
+    "block": "अवरोध पैदा करना",
+    "orgName": "नाम दर्ज करें"
   },
   "forgotPassword": {
     "title": "तलवा पासवर्ड भूल गए",
@@ -226,7 +236,9 @@
     "enterNewPassword": "नया पासवर्ड दर्ज करें",
     "cofirmNewPassword": "नए पासवर्ड की पुष्टि करें",
     "changePassword": "पासवर्ड बदलें",
-    "backToHome": "घर वापिस जा रहा हूँ"
+    "backToHome": "घर वापिस जा रहा हूँ",
+    "userOtp": "उदाहरण के लिए 12345",
+    "password": "पासवर्ड"
   },
   "pageNotFound": {
     "title": "404 नहीं मिला",
@@ -240,7 +252,9 @@
     "filterByName": "नाम से फ़िल्टर करें",
     "filterByTransId": "ट्रांस आईडी द्वारा फ़िल्टर करें",
     "recentStats": "हाल के आँकड़े",
-    "contribution": "योगदान"
+    "contribution": "योगदान",
+    "orgname": "नाम दर्ज करें",
+    "searchtransaction": "लेन-देन आईडी दर्ज करें"
   },
   "contriStats": {
     "recentContribution": "हाल ही में योगदान",
@@ -266,7 +280,7 @@
     "lastName": "उपनाम",
     "email": "ईमेल",
     "password": "पासवर्ड",
-    "appLanguageCode": "ऐप भाषा कोड",
+    "appLanguageCode": "डिफ़ॉल्ट भाषा",
     "userType": "उपयोगकर्ता का प्रकार",
     "admin": "व्यवस्थापक",
     "superAdmin": "सुपरएडमिन",
@@ -285,12 +299,40 @@
   "orgUpdate": {
     "name": "नाम",
     "description": "विवरण",
-    "creator": "बनाने वाला",
-    "apiUrl": "एपी यूआरएल",
+    "location": "जगह",
     "displayImage": "प्रदर्शन छवि",
     "isPublic": "सार्वजनिक है",
     "isRegistrable": "पंजीकरण योग्य है",
     "saveChanges": "परिवर्तनों को सुरक्षित करें",
-    "cancel": "रद्द करना"
+    "cancel": "रद्द करना",
+    "enterNameOrganization": "संगठन का नाम दर्ज करें"
+  },
+  "addOnRegister": {
+    "addNew": "नया जोड़ो",
+    "addPlugin": "प्लगइन जोड़ें",
+    "pluginName": "प्लगइन का नाम",
+    "creatorName": "निर्माता का नाम",
+    "pluginDesc": "प्लगइन विवरण",
+    "close": "बंद करना",
+    "register": "पंजीकरण करवाना",
+    "pName": "जैसे: दान",
+    "cName": "जैसे: जॉन डो",
+    "pDesc": "यह प्लगइन यूआई को सक्षम बनाता है"
+  },
+  "addOnStore": {
+    "searchName": "जैसे: दान",
+    "enable": "सक्रिय",
+    "disable": "अक्षम",
+    "pHeading": "प्लग-इन",
+    "install": "स्थापित",
+    "available": "उपलब्ध",
+    "pMessage": "प्लगइन मौजूद नहीं है",
+    "filter": "फिल्टर",
+    "search": "खोज"
+  },
+  "addOnEntry": {
+    "enable": "सक्रिय",
+    "install": "स्थापित करना",
+    "uninstall": "स्थापना रद्द करें"
   }
 }

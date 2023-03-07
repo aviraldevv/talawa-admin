@@ -1,12 +1,7 @@
 {
   "loginPage": {
     "title": "塔拉瓦管理員",
-    "talawa_description": {
-      "part1": "這是",
-      "part2": " 塔拉瓦管理員管理門戶 ",
-      "part3": "用於 Talawa 應用程序的無縫管理"
-    },
-    "fromPalisadoes": "從柵欄",
+    "fromPalisadoes": "柵欄 基金会志愿者的开源应用程序",
     "talawa_portal": "塔拉瓦門戶",
     "login": "登錄",
     "register": "登記",
@@ -16,7 +11,9 @@
     "password": "密碼",
     "atleast_8_char_long": "至少 8 個字符長",
     "confirmPassword": "確認密碼",
-    "forgotPassword": "忘記密碼 ？"
+    "forgotPassword": "忘記密碼 ？",
+    "enterEmail": "输入电子邮件",
+    "enterPassword": "输入密码"
   },
   "listNavbar": {
     "talawa_portal": "塔拉瓦門戶",
@@ -35,10 +32,10 @@
     "createOrganization": "創建組織",
     "description": "描述",
     "location": "地點",
-    "tags": "標籤（逗號（，）分隔）",
     "isPublic": "是否公開",
     "visibleInSearch": "在搜索中可見",
-    "displayImage": "顯示圖像"
+    "displayImage": "顯示圖像",
+    "enterName": "输入名字"
   },
   "superDashListCard": {
     "created": "創造",
@@ -59,7 +56,8 @@
     "roles_userType": "角色/用戶類型",
     "admin": "行政",
     "superAdmin": "超級管理員",
-    "user": "用戶"
+    "user": "用戶",
+    "enterName": "输入名字"
   },
   "requests": {
     "title": "塔拉瓦請求",
@@ -68,7 +66,8 @@
     "name": "姓名",
     "email": "電子郵件",
     "accept": "接受",
-    "reject": "拒絕"
+    "reject": "拒絕",
+    "enterName": "输入名字"
   },
   "adminNavbar": {
     "talawa_portal": "塔拉瓦門戶",
@@ -80,6 +79,7 @@
     "Block/Unblock": "阻止/解除阻止",
     "Plugins": "插件",
     "Plugin Store": "插件商店",
+    "allOrganizations": "所有组织",
     "notification": "通知",
     "settings": "設置",
     "language": "語",
@@ -94,8 +94,6 @@
     "title": "塔拉瓦儀表板",
     "location": "地點",
     "about": "關於",
-    "tags": "標籤",
-    "noTags": "無標籤",
     "deleteThisOrganization": "刪除此組織",
     "statistics": "統計數據",
     "members": "成員",
@@ -116,7 +114,9 @@
     "filterByEvent": "按事件過濾",
     "members": "成員",
     "admins": "管理員",
-    "users": "用戶"
+    "users": "用戶",
+    "searchName": "輸入名字",
+    "searchevent": "輸入事件"
   },
   "userListCard": {
     "joined": "加入",
@@ -141,6 +141,7 @@
   "organizationEvents": {
     "title": "塔拉瓦事件",
     "filterByTitle": "按標題過濾",
+    "filterByLocation": "按位置過濾",
     "filterByDescription": "按描述過濾",
     "events": "事件",
     "addEvent": "添加事件",
@@ -156,7 +157,11 @@
     "recurringEvent": "重複事件",
     "isPublic": "是公開的",
     "isRegistrable": "可註冊",
-    "createEvent": "創建事件"
+    "createEvent": "創建事件",
+    "enterFilter": "輸入過濾器",
+    "enterTitle": "輸入標題",
+    "enterDescrip": "輸入說明",
+    "eventLocation": "輸入位置"
   },
   "eventListCard": {
     "location": "地點",
@@ -189,7 +194,11 @@
     "information": "信息",
     "image": "圖片",
     "video": "視頻",
-    "addPost": "添加帖子"
+    "addPost": "添加帖子",
+    "searchTitle": "按標題搜索",
+    "searchText": "按文本搜索",
+    "ptitle": "帖子標題",
+    "postDes": "你要談什麼？"
   },
   "orgPostCard": {
     "author": "作者",
@@ -215,7 +224,8 @@
     "email": "電子郵件",
     "block_unblock": "阻止/解除阻止",
     "unblock": "解除封鎖",
-    "block": "堵塞"
+    "block": "堵塞",
+    "orgName": "輸入名字"
   },
   "forgotPassword": {
     "title": "塔拉瓦忘記密碼",
@@ -226,7 +236,9 @@
     "enterNewPassword": "輸入新密碼",
     "cofirmNewPassword": "確認新密碼",
     "changePassword": "更改密碼",
-    "backToHome": "回到家"
+    "backToHome": "回到家",
+    "userOtp": "舉個例子。 12345",
+    "password": "密碼"
   },
   "pageNotFound": {
     "title": "404 未找到",
@@ -240,7 +252,9 @@
     "filterByName": "按名稱過濾",
     "filterByTransId": "按 Trans.ID 過濾",
     "recentStats": "最近的統計",
-    "contribution": "貢獻"
+    "contribution": "貢獻",
+    "orgname": "輸入名字",
+    "searchtransaction": "輸入交易編號"
   },
   "contriStats": {
     "recentContribution": "最近的貢獻",
@@ -266,7 +280,7 @@
     "lastName": "姓",
     "email": "電子郵件",
     "password": "密碼",
-    "appLanguageCode": "應用語言代碼",
+    "appLanguageCode": "默认语言",
     "userType": "用戶類型",
     "admin": "行政",
     "superAdmin": "超級管理員",
@@ -285,12 +299,40 @@
   "orgUpdate": {
     "name": "姓名",
     "description": "描述",
-    "creator": "創造者",
-    "apiUrl": "API 網址",
+    "location": "地點",
     "displayImage": "顯示圖像",
     "isPublic": "是公開的",
     "isRegistrable": "可註冊",
     "saveChanges": "保存更改",
-    "cancel": "取消"
+    "cancel": "取消",
+    "enterNameOrganization": "輸入組織名稱"
+  },
+  "addOnRegister": {
+    "addNew": "添新",
+    "addPlugin": "添加插件",
+    "pluginName": "插件名称",
+    "creatorName": "创建者姓名",
+    "pluginDesc": "插件说明",
+    "close": "关闭",
+    "register": "登记",
+    "pName": "例如：捐赠",
+    "cName": "例如：约翰·多伊",
+    "pDesc": "此插件启用 UI"
+  },
+  "addOnStore": {
+    "searchName": "例如：捐赠",
+    "enable": "启用",
+    "disable": "残疾人",
+    "pHeading": "插件",
+    "install": "已安装",
+    "available": "可用的",
+    "pMessage": "插件不存在”",
+    "filter": "过滤器",
+    "search": "搜索"
+  },
+  "addOnEntry": {
+    "enable": "启用",
+    "install": "安装",
+    "uninstall": "卸载"
   }
 }

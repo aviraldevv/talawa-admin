@@ -82,7 +82,6 @@ function OrganizationDashboard(): JSX.Element {
     <>
       <AdminNavbar targets={targets} url_1={configUrl} />
       <Row className={styles.toporginfo}>
-        <p></p>
         <p className={styles.toporgname}>{data.organizations[0].name}</p>
         <p className={styles.toporgloc}>
           {t('location')} : {data.organizations[0].location}
@@ -94,23 +93,19 @@ function OrganizationDashboard(): JSX.Element {
             <div className={styles.sidebarsticky}>
               <h6 className={styles.titlename}>{t('about')}</h6>
               <p>{data.organizations[0].description}</p>
-              <img src={AboutImg} className={styles.org_about_img} />
-              <h6 className={styles.titlename}>{t('tags')}</h6>
-              <p className={styles.tagdetails}>
-                {data.organizations[0].tags.length > 0 ? (
-                  data.organizations[0].tags.map(
-                    (tag: string, index: number) => (
-                      <button className="mb-3" key={index}>
-                        {tag}
-                      </button>
-                    )
-                  )
-                ) : (
-                  <button>{t('noTags')}</button>
-                )}
-              </p>
-              <p className={styles.tagdetails}></p>
-              <p className={styles.tagdetails}></p>
+              {data.organizations[0].image ? (
+                <img
+                  src={data.organizations[0].image}
+                  className={styles.org_about_img}
+                  data-testid="orgDashImgPresent"
+                />
+              ) : (
+                <img
+                  src={AboutImg}
+                  className={styles.org_about_img}
+                  data-testid="orgDashImgAbsent"
+                />
+              )}
               <p className={styles.tagdetailsGreen}>
                 <button
                   type="button"

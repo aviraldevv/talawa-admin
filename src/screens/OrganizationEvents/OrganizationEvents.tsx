@@ -13,10 +13,12 @@ import { useTranslation } from 'react-i18next';
 import styles from './OrganizationEvents.module.css';
 import AdminNavbar from 'components/AdminNavbar/AdminNavbar';
 import EventListCard from 'components/EventListCard/EventListCard';
-import { ORGANIZATION_EVENT_LIST } from 'GraphQl/Queries/Queries';
+import { ORGANIZATION_EVENT_CONNECTION_LIST } from 'GraphQl/Queries/Queries';
 import { CREATE_EVENT_MUTATION } from 'GraphQl/Mutations/mutations';
 import { RootState } from 'state/reducers';
 import PaginationList from 'components/PaginationList/PaginationList';
+import debounce from 'utils/debounce';
+import dayjs from 'dayjs';
 
 function OrganizationEvents(): JSX.Element {
   const { t } = useTranslation('translation', {
@@ -27,10 +29,6 @@ function OrganizationEvents(): JSX.Element {
   const [eventmodalisOpen, setEventModalIsOpen] = useState(false);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [searchState, setSearchState] = useState({
-    byTitle: '',
-    byDescription: '',
-  });
 
   const [startDate, setStartDate] = React.useState<Date | null>(new Date());
   const [endDate, setEndDate] = React.useState<Date | null>(new Date());
@@ -46,8 +44,8 @@ function OrganizationEvents(): JSX.Element {
     eventdescrip: '',
     date: '',
     location: '',
-    startTime: '',
-    endTime: '',
+    startTime: '08:00:00',
+    endTime: '18:00:00',
   });
   const currentUrl = window.location.href.split('=')[1];
 
@@ -61,9 +59,17 @@ function OrganizationEvents(): JSX.Element {
     setEventModalIsOpen(false);
   };
 
-  const { data, loading, error, refetch } = useQuery(ORGANIZATION_EVENT_LIST, {
-    variables: { id: currentUrl },
-  });
+  const { data, loading, error, refetch } = useQuery(
+    ORGANIZATION_EVENT_CONNECTION_LIST,
+    {
+      variables: {
+        organization_id: currentUrl,
+        title_contains: '',
+        description_contains: '',
+        location_contains: '',
+      },
+    }
+  );
 
   const [create, { loading: loading_2 }] = useMutation(CREATE_EVENT_MUTATION);
 
@@ -78,12 +84,12 @@ function OrganizationEvents(): JSX.Element {
           recurring: recurringchecked,
           isRegisterable: registrablechecked,
           organizationId: currentUrl,
-          startDate: startDate?.toDateString(),
-          endDate: endDate?.toDateString(),
+          startDate: dayjs(startDate).format('YYYY-MM-DD'),
+          endDate: dayjs(endDate).format('YYYY-MM-DD'),
           allDay: alldaychecked,
           location: formState.location,
-          startTime: formState.startTime,
-          endTime: formState.endTime,
+          startTime: !alldaychecked ? formState.startTime + 'Z' : null,
+          endTime: !alldaychecked ? formState.endTime + 'Z' : null,
         },
       });
 
@@ -96,8 +102,8 @@ function OrganizationEvents(): JSX.Element {
           eventdescrip: '',
           date: '',
           location: '',
-          startTime: '',
-          endTime: '',
+          startTime: '08:00:00',
+          endTime: '18:00:00',
         });
       }
     } catch (error: any) {
@@ -136,22 +142,34 @@ function OrganizationEvents(): JSX.Element {
 
   const handleSearchByTitle = (e: any) => {
     const { value } = e.target;
-    setSearchState({ ...searchState, byTitle: value });
     const filterData = {
-      id: currentUrl,
-      filterByTitle: searchState.byTitle,
+      organization_id: currentUrl,
+      title_contains: value,
     };
     refetch(filterData);
   };
   const handleSearchByDescription = (e: any) => {
     const { value } = e.target;
-    setSearchState({ ...searchState, byDescription: value });
     const filterData = {
-      id: currentUrl,
-      filterByDescription: searchState.byDescription,
+      organization_id: currentUrl,
+      description_contains: value,
     };
     refetch(filterData);
   };
+  const handleSearchByLocation = (e: any) => {
+    const { value } = e.target;
+    const filterData = {
+      organization_id: currentUrl,
+      location_contains: value,
+    };
+    refetch(filterData);
+  };
+
+  const debouncedHandleSearchByTitle = debounce(handleSearchByTitle);
+  const debouncedHandleSearchByDescription = debounce(
+    handleSearchByDescription
+  );
+  const debouncedHandleSearchByLocation = debounce(handleSearchByLocation);
 
   return (
     <>
@@ -164,21 +182,30 @@ function OrganizationEvents(): JSX.Element {
               <input
                 type="name"
                 id="searchTitle"
-                placeholder="Enter filter"
+                placeholder={t('enterFilter')}
                 autoComplete="off"
                 required
-                onChange={handleSearchByTitle}
+                onChange={debouncedHandleSearchByTitle}
                 data-testid="serachByTitle"
               />
-
+              <h6 className={styles.searchtitle}>{t('filterByLocation')}</h6>
+              <input
+                type="name"
+                id="searchlocation"
+                placeholder={t('enterFilter')}
+                autoComplete="off"
+                required
+                onChange={debouncedHandleSearchByLocation}
+                data-testid="searchByLocation"
+              />
               <h6 className={styles.searchtitle}>{t('filterByDescription')}</h6>
               <input
                 type="name"
                 id="searchDescription"
-                placeholder="Enter filter"
+                placeholder={t('enterFilter')}
                 autoComplete="off"
                 required
-                onChange={handleSearchByDescription}
+                onChange={debouncedHandleSearchByDescription}
                 data-testid="serachByDescription"
               />
             </div>
@@ -200,11 +227,11 @@ function OrganizationEvents(): JSX.Element {
             <div className={`row ${styles.list_box}`}>
               {data
                 ? (rowsPerPage > 0
-                    ? data.eventsByOrganization.slice(
+                    ? data.eventsByOrganizationConnection.slice(
                         page * rowsPerPage,
                         page * rowsPerPage + rowsPerPage
                       )
-                    : data.eventsByOrganization
+                    : data.eventsByOrganizationConnection
                   ).map(
                     (datas: {
                       _id: string;
@@ -247,7 +274,9 @@ function OrganizationEvents(): JSX.Element {
               <tbody>
                 <tr>
                   <PaginationList
-                    count={data ? data.eventsByOrganization.length : 0}
+                    count={
+                      data ? data.eventsByOrganizationConnection.length : 0
+                    }
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onPageChange={handleChangePage}
@@ -284,7 +313,7 @@ function OrganizationEvents(): JSX.Element {
               <input
                 type="title"
                 id="eventitle"
-                placeholder="Enter Title"
+                placeholder={t('enterTitle')}
                 autoComplete="off"
                 required
                 value={formState.title}
@@ -299,7 +328,7 @@ function OrganizationEvents(): JSX.Element {
               <input
                 type="eventdescrip"
                 id="eventdescrip"
-                placeholder="Enter Description"
+                placeholder={t('enterDescrip')}
                 autoComplete="off"
                 required
                 value={formState.eventdescrip}
@@ -314,7 +343,7 @@ function OrganizationEvents(): JSX.Element {
               <input
                 type="text"
                 id="eventLocation"
-                placeholder="Enter Location"
+                placeholder={t('eventLocation')}
                 autoComplete="off"
                 required
                 value={formState.location}
@@ -333,7 +362,7 @@ function OrganizationEvents(): JSX.Element {
                     id="startdate"
                     selected={startDate}
                     onChange={(date: Date | null) => setStartDate(date)}
-                    placeholderText="Start Date"
+                    placeholderText={t('startDate')}
                   />
                 </div>
                 <div>
@@ -343,7 +372,7 @@ function OrganizationEvents(): JSX.Element {
                     id="enddate"
                     selected={endDate}
                     onChange={(date: Date | null) => setEndDate(date)}
-                    placeholderText="End Date"
+                    placeholderText={t('endDate')}
                   />
                 </div>
               </div>
@@ -353,7 +382,7 @@ function OrganizationEvents(): JSX.Element {
                     <label htmlFor="startTime">{t('startTime')}</label>
                     <input
                       id="startTime"
-                      placeholder="Start Time"
+                      placeholder={t('startTime')}
                       value={formState.startTime}
                       onChange={(e) =>
                         setFormState({
@@ -367,7 +396,7 @@ function OrganizationEvents(): JSX.Element {
                     <label htmlFor="endTime">{t('endTime')}</label>
                     <input
                       id="endTime"
-                      placeholder="End Time"
+                      placeholder={t('endTime')}
                       value={formState.endTime}
                       onChange={(e) =>
                         setFormState({

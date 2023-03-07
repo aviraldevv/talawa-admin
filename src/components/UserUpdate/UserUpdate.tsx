@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { UPDATE_USER_MUTATION } from 'GraphQl/Mutations/mutations';
 import { useTranslation } from 'react-i18next';
 
+import { languages } from 'utils/languages';
 import styles from './UserUpdate.module.css';
 
 interface UserUpdateProps {
@@ -62,7 +63,7 @@ function UserUpdate(props: UserUpdateProps): JSX.Element {
               <input
                 type="input"
                 id="firstname"
-                placeholder="Enter First Name"
+                placeholder={t('firstName')}
                 autoComplete="off"
                 required
                 value={formState.firstName}
@@ -79,7 +80,7 @@ function UserUpdate(props: UserUpdateProps): JSX.Element {
               <input
                 type="input"
                 id="lastname"
-                placeholder="Enter Last Name"
+                placeholder={t('lastName')}
                 autoComplete="off"
                 required
                 value={formState.lastName}
@@ -98,7 +99,7 @@ function UserUpdate(props: UserUpdateProps): JSX.Element {
               <input
                 type="email"
                 id="email"
-                placeholder="Enter Email"
+                placeholder={t('email')}
                 autoComplete="off"
                 required
                 value={formState.email}
@@ -115,7 +116,7 @@ function UserUpdate(props: UserUpdateProps): JSX.Element {
               <input
                 type="password"
                 id="password"
-                placeholder="Enter Password"
+                placeholder={t('password')}
                 required
                 value={formState.password}
                 onChange={(e) => {
@@ -130,19 +131,22 @@ function UserUpdate(props: UserUpdateProps): JSX.Element {
           <div className={styles.dispflex}>
             <div>
               <label>{t('appLanguageCode')}</label>
-              <input
-                type="input"
-                id="applangcode"
-                placeholder="Enter App Language Code"
-                required
-                value={formState.applangcode}
+              <select
+                className="form-control"
+                data-testid="applangcode"
                 onChange={(e) => {
                   setFormState({
                     ...formState,
                     applangcode: e.target.value,
                   });
                 }}
-              />
+              >
+                {languages.map((language, index: number) => (
+                  <option key={index} value={language.code}>
+                    {language.name}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <label>{t('userType')}</label>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './AddOnEntry.module.css';
 import { Button, Card, Form, Spinner } from 'react-bootstrap';
@@ -7,6 +7,7 @@ import {
   UPDATE_ORG_STATUS_PLUGIN_MUTATION,
 } from 'GraphQl/Mutations/mutations';
 import { useMutation } from '@apollo/client';
+import { useTranslation } from 'react-i18next';
 
 interface AddOnEntryProps {
   id: string;
@@ -28,34 +29,24 @@ function AddOnEntry({
   title,
   description,
   createdBy,
-  component,
   installed,
-  configurable,
-  modified,
   isInstalled,
   getInstalledPlugins,
 }: AddOnEntryProps): JSX.Element {
-  const [buttonLoading, setButtonLoading] = useState(false);
-  const [switchInProgress, setSwitchState] = useState(false);
-  const [isInstalledLocal, setIsInstalledLocal] = useState(isInstalled);
-  const entry = {
-    id,
-    name: title,
-    description,
-    createdBy,
-    component,
-  };
+  const { t } = useTranslation('translation', { keyPrefix: 'addOnEntry' });
 
-  const [updateInstallStatus, { loading: loading_2 }] = useMutation(
+  const [buttonLoading, setButtonLoading] = useState(false);
+  const [switchInProgress] = useState(false);
+  const [isInstalledLocal, setIsInstalledLocal] = useState(isInstalled);
+
+  const [updateInstallStatus] = useMutation(
     UPDATE_INSTALL_STATUS_PLUGIN_MUTATION
   );
-  const [updateOrgStatus, { loading: loading_3 }] = useMutation(
-    UPDATE_ORG_STATUS_PLUGIN_MUTATION
-  );
+  const [updateOrgStatus] = useMutation(UPDATE_ORG_STATUS_PLUGIN_MUTATION);
 
   const currentOrg = window.location.href.split('=')[1];
   const updateOrgList = async () => {
-    const { data } = await updateOrgStatus({
+    await updateOrgStatus({
       variables: {
         id: id.toString(),
         orgId: currentOrg.toString(),
@@ -65,7 +56,7 @@ function AddOnEntry({
   };
   const updateInstallStatusFunc = async () => {
     setButtonLoading(true);
-    const { data } = await updateInstallStatus({
+    await updateInstallStatus({
       variables: {
         id: id.toString(),
         status: !isInstalledLocal,
@@ -154,7 +145,7 @@ function AddOnEntry({
           <Form.Check
             type="switch"
             id="custom-switch"
-            label="Enabled"
+            label={t('enable')}
             className={styles.entrytoggle}
             // eslint-disable-next-line @typescript-eslint/no-empty-function
             onChange={() => {}}
@@ -188,7 +179,7 @@ function AddOnEntry({
               ></i>
             )}
             {/* {installed ? 'Remove' : configurable ? 'Installed' : 'Install'} */}
-            {isInstalledLocal ? 'Uninstall' : 'Install'}
+            {isInstalledLocal ? t('uninstall') : t('install')}
           </Button>
         </Card.Body>
       </Card>

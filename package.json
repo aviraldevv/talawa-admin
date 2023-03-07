@@ -1,10 +1,10 @@
 {
   "name": "my-app",
-  "version": "0.1.0",
+  "version": "3.0.0",
   "private": true,
   "type": "module",
   "dependencies": {
-    "@apollo/client": "^3.4.12",
+    "@apollo/client": "^3.4.0-beta.19",
     "@apollo/link-error": "^2.0.0-beta.3",
     "@apollo/react-testing": "^4.0.0",
     "@emotion/react": "^11.9.3",
@@ -68,9 +68,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint \"**/*.{ts,tsx}\"",
-    "lint-fix": "eslint \"**/*.{ts,tsx}\" --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,json,scss,css}\""
+    "lint:check": "eslint \"**/*.{ts,tsx}\" --max-warnings=0",
+    "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
+    "format:fix": "prettier --write \"**/*.{ts,tsx,json,scss,css}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,scss,css}\"",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -101,12 +104,16 @@
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^8.0.3",
     "jest-localstorage-mock": "^2.4.19",
     "jest-location-mock": "^1.0.9",
     "jquery": "^3.2.1"
   },
   "resolutions": {
-    "@apollo/client": "^3.4.0-beta.19"
+    "@apollo/client": "^3.4.0-beta.19",
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2",
+    "graphql": "^16.5.0"
   },
   "jest": {
     "collectCoverageFrom": [

@@ -70,7 +70,7 @@ function AdminNavbar({ targets, url_1 }: NavbarProps): JSX.Element {
   }, []);
 
   useEffect(() => {
-    if (data) {
+    if (data && data.organizations[0].spamCount) {
       setSpamCountData(
         data.organizations[0].spamCount.filter(
           (spam: any) => spam.isReaded === false
@@ -91,14 +91,31 @@ function AdminNavbar({ targets, url_1 }: NavbarProps): JSX.Element {
     window.location.replace('/orglist');
   }
 
+  let OrgName;
+  if (data) {
+    OrgName = data.organizations[0].name;
+  }
+
   return (
     <>
       <Navbar className={styles.navbarbg} expand="xl" fixed="top">
-        <Navbar.Brand>
-          <Link className={styles.logo} to="/orglist">
-            <img src={Logo} />
-            <strong>{t('talawa_portal')}</strong>
-          </Link>
+        <Navbar.Brand className={styles.navbarBrandLogo}>
+          <div className={styles.logo}>
+            {data?.organizations[0].image ? (
+              <img
+                src={data.organizations[0].image}
+                className={styles.roundedcircle}
+                data-testid={'orgLogoPresent'}
+              />
+            ) : (
+              <img
+                src={Logo}
+                className={styles.roundedcircle}
+                data-testid={'orgLogoAbsent'}
+              />
+            )}
+            <strong>{OrgName}</strong>
+          </div>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -153,6 +170,9 @@ function AdminNavbar({ targets, url_1 }: NavbarProps): JSX.Element {
               );
             })}
           </Nav>
+          <Link className={styles.allOrgBtn} to="/orglist">
+            {t('allOrganizations')}
+          </Link>
           <Nav className="ml-auto ">
             <div className={styles.notificationIcon}>
               <IconButton
@@ -171,12 +191,24 @@ function AdminNavbar({ targets, url_1 }: NavbarProps): JSX.Element {
               </IconButton>
             </div>
             <Dropdown className={styles.dropdowns}>
-              <Dropdown.Toggle variant="" id="dropdown-basic">
-                <img
-                  src="https://via.placeholder.com/45x45"
-                  className={styles.roundedcircle}
-                  data-testid="logoutDropdown"
-                />
+              <Dropdown.Toggle
+                variant=""
+                id="dropdown-basic"
+                data-testid="logoutDropdown"
+              >
+                {data?.organizations[0].image ? (
+                  <img
+                    src={data.organizations[0].image}
+                    className={styles.roundedcircle}
+                    data-testid="navbarOrgImagePresent"
+                  />
+                ) : (
+                  <img
+                    src={Logo}
+                    className={styles.roundedcircle}
+                    data-testid="navbarOrgImageAbsent"
+                  />
+                )}
               </Dropdown.Toggle>
               <Dropdown.Menu className={styles.dropdownMenu}>
                 <Dropdown.Item

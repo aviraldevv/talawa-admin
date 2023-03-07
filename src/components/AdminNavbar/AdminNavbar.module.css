@@ -24,15 +24,18 @@ a {
 }
 
 .navbarbg {
-  height: 60px;
+  /* height: 60px; */
+  height: auto;
   background-color: white;
   z-index: 1;
   box-shadow: 0px 0px 8px 2px #c8c8c8;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .logo {
   color: #707070;
-  margin-left: 0;
+  margin: 0.5rem 0;
   display: flex;
   align-items: center;
   text-decoration: none !important;
@@ -41,16 +44,14 @@ a {
 .logo img {
   margin-top: 0px;
   margin-left: 10px;
-  height: 64px;
-  width: 70px;
 }
 
 .logo > strong {
   text-decoration: none;
   line-height: 1.5rem;
-  margin-left: -5px;
+  margin-left: 10px;
   font-family: sans-serif;
-  font-size: 19px;
+  font-size: 24px;
   color: #707070;
 }
 .userimage {
@@ -63,6 +64,9 @@ a {
 .roundedcircle {
   margin-right: 5px;
   border-radius: 50px;
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
 }
 .navitems > .navlinks {
   margin-top: 11px;
@@ -195,4 +199,23 @@ a {
     top: 0px;
     right: -8px;
   }
+}
+
+.navbarBrandLogo {
+  padding: 0;
+}
+
+.allOrgBtn {
+  margin-left: 10px;
+  background-color: #31bb6b;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.allOrgBtn:hover {
+  color: #fff;
+  background-color: #1e7e34;
+  border-color: #1c7430;
 }

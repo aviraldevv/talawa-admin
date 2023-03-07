@@ -1,12 +1,7 @@
 {
   "loginPage": {
     "title": "Administrador Talawa",
-    "talawa_description": {
-      "part1": "Esto es",
-      "part2": " Portal de administración de administración de Talawa ",
-      "part3": "para la gestión perfecta de la aplicación Talawa."
-    },
-    "fromPalisadoes": "DESDE PALIZADOS",
+    "fromPalisadoes": "Una aplicación de código abierto de los voluntarios de la Fundación palisados",
     "talawa_portal": "Portal Talawa",
     "login": "Acceso",
     "register": "Registro",
@@ -16,7 +11,9 @@
     "password": "Clave",
     "atleast_8_char_long": "Al menos 8 caracteres de largo",
     "confirmPassword": "Confirmar contraseña",
-    "forgotPassword": "Has olvidado tu contraseña ?"
+    "forgotPassword": "Has olvidado tu contraseña ?",
+    "enterEmail": "ingrese correo electrónico",
+    "enterPassword": "introducir la contraseña"
   },
   "listNavbar": {
     "talawa_portal": "Portal Talawa",
@@ -35,10 +32,10 @@
     "createOrganization": "Crear organización",
     "description": "Descripción",
     "location": "Ubicación",
-    "tags": "Etiquetas (coma (,) separado)",
     "isPublic": "Es público",
     "visibleInSearch": "Visible en la búsqueda",
-    "displayImage": "Mostrar imagen"
+    "displayImage": "Mostrar imagen",
+    "enterName": "Ingrese su nombre"
   },
   "superDashListCard": {
     "created": "Creado",
@@ -59,7 +56,8 @@
     "roles_userType": "Rol/Tipo de usuario",
     "admin": "ADMINISTRACIÓN",
     "superAdmin": "SUPERADMIN",
-    "user": "USUARIO"
+    "user": "USUARIO",
+    "enterName": "Ingrese su nombre"
   },
   "requests": {
     "title": "Solicitudes Talawa",
@@ -68,7 +66,8 @@
     "name": "Nombre",
     "email": "Correo electrónico",
     "accept": "Aceptar",
-    "reject": "Rechazar"
+    "reject": "Rechazar",
+    "enterName": "Ingrese su nombre"
   },
   "adminNavbar": {
     "talawa_portal": "Portal Talawa",
@@ -80,6 +79,7 @@
     "Block/Unblock": "Bloquear/Desbloquear",
     "Plugins": "Complementos",
     "Plugin Store": "Tienda de complementos",
+    "allOrganizations": "Todas las organizaciones",
     "notification": "Notificación",
     "settings": "Ajustes",
     "language": "Idioma",
@@ -94,8 +94,6 @@
     "title": "Panel de Talawa",
     "location": "Ubicación",
     "about": "Sobre",
-    "tags": "Etiquetas",
-    "noTags": "No etiquetas",
     "deleteThisOrganization": "Eliminar esta organización",
     "statistics": "Estadísticas",
     "members": "Miembros",
@@ -116,7 +114,9 @@
     "filterByEvent": "Filtrar por Evento",
     "members": "Miembros",
     "admins": "Administradores",
-    "users": "Usuarios"
+    "users": "Usuarios",
+    "searchName": "Ingrese su nombre",
+    "searchevent": "Ingresar evento"
   },
   "userListCard": {
     "joined": "Unido",
@@ -141,6 +141,7 @@
   "organizationEvents": {
     "title": "Eventos Talawa",
     "filterByTitle": "Filtrar por Título",
+    "filterByLocation": "Filtrar por Ubicación",
     "filterByDescription": "Filtrar por descripción",
     "events": "Eventos",
     "addEvent": "Añadir evento",
@@ -156,7 +157,11 @@
     "recurringEvent": "Evento recurrente",
     "isPublic": "Es público",
     "isRegistrable": "Es registrable",
-    "createEvent": "Crear evento"
+    "createEvent": "Crear evento",
+    "enterFilter": "Introducir filtro",
+    "enterTitle": "Ingrese el título",
+    "enterDescrip": "Introduce la descripción",
+    "eventLocation": "Introducir ubicación"
   },
   "eventListCard": {
     "location": "Ubicación",
@@ -189,7 +194,11 @@
     "information": "Información",
     "image": "Imagen",
     "video": "Video",
-    "addPost": "Añadir publicación"
+    "addPost": "Añadir publicación",
+    "searchTitle": "Buscar por título",
+    "searchText": "Buscar por texto",
+    "ptitle": "Título de la entrada",
+    "postDes": "¿De qué hablar?"
   },
   "orgPostCard": {
     "author": "Autor",
@@ -215,7 +224,8 @@
     "email": "Correo electrónico",
     "block_unblock": "Bloquear/Desbloquear",
     "unblock": "Desatascar",
-    "block": "Bloquear"
+    "block": "Bloquear",
+    "orgName": "Ingrese su nombre"
   },
   "forgotPassword": {
     "title": "Talawa olvidó su contraseña",
@@ -226,7 +236,9 @@
     "enterNewPassword": "Ingrese nueva clave",
     "cofirmNewPassword": "Confirmar nueva contraseña",
     "changePassword": "Cambia la contraseña",
-    "backToHome": "De vuelta a casa"
+    "backToHome": "De vuelta a casa",
+    "userOtp": "por ejemplo 12345",
+    "password": "Contraseña"
   },
   "pageNotFound": {
     "title": "404 No encontrado",
@@ -240,7 +252,9 @@
     "filterByName": "Filtrar por nombre",
     "filterByTransId": "Filtrar por ID de transacción",
     "recentStats": "Estadísticas recientes",
-    "contribution": "Contribución"
+    "contribution": "Contribución",
+    "orgname": "Ingrese su nombre",
+    "searchtransaction": "Ingrese la identificación de la transacción"
   },
   "contriStats": {
     "recentContribution": "Contribución reciente",
@@ -266,7 +280,7 @@
     "lastName": "Apellido",
     "email": "Correo electrónico",
     "password": "Clave",
-    "appLanguageCode": "Código de idioma de la aplicación",
+    "appLanguageCode": "Idioma predeterminado",
     "userType": "Tipo de usuario",
     "admin": "Administración",
     "superAdmin": "Superadministrador",
@@ -285,12 +299,40 @@
   "orgUpdate": {
     "name": "Nombre",
     "description": "Descripción",
-    "creator": "Creador",
-    "apiUrl": "URL API",
+    "location": "ubicación",
     "displayImage": "Mostrar imagen",
     "isPublic": "Es público",
     "isRegistrable": "Es registrable",
     "saveChanges": "Guardar cambios",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "enterNameOrganization": "Ingrese el nombre de la organización"
+  },
+  "addOnRegister": {
+    "addNew": "Agregar nueva",
+    "addPlugin": "Agregar complemento",
+    "pluginName": "Nombre del complemento",
+    "creatorName": "Nombre del creadora",
+    "pluginDesc": "Descripción del complemento",
+    "close": "Cerca",
+    "register": "Registro",
+    "pName": "Ej: Donaciones",
+    "cName": "Ej: John Doe",
+    "pDesc": "Este complemento habilita la interfaz de usuario para"
+  },
+  "addOnStore": {
+    "searchName": "Ej: Donaciones",
+    "enable": "Activada",
+    "disable": "Desactivada",
+    "pHeading": "Complementos",
+    "install": "Instalada",
+    "available": "Disponible",
+    "pMessage": "El complemento no existe",
+    "filter": "filtros",
+    "search": "Buscar"
+  },
+  "addOnEntry": {
+    "enable": "Activada",
+    "install": "Instalar",
+    "uninstall": "Desinstalar"
   }
 }
