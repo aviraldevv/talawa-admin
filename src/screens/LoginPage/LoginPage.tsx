@@ -69,6 +69,26 @@ function LoginPage(): JSX.Element {
   const [recaptcha, { loading: recaptchaLoading }] =
     useMutation(RECAPTCHA_MUTATION);
 
+  useEffect(() => {
+    async function loadResource() {
+      const resourceUrl = 'http://localhost:4000/graphql/';
+
+      try {
+        const response = await fetch(resourceUrl);
+        if (response != null) {
+          toast.success('Talawa-Admin resources loaded successfully');
+        }
+      } catch (error) {
+        console.error('Failed to load resource:', error);
+        toast.warn(
+          'Talawa-API service is unavailable. Is it running? Check your network connectivity too.'
+        );
+      }
+    }
+
+    loadResource();
+  }, []);
+
   const verifyRecaptcha = async (recaptchaToken: any) => {
     try {
       const { data } = await recaptcha({
@@ -94,7 +114,6 @@ function LoginPage(): JSX.Element {
     recaptchaRef.current?.reset();
 
     const isVerified = await verifyRecaptcha(recaptchaToken);
-
     /* istanbul ignore next */
     if (!isVerified) {
       toast.error('Please, check the captcha.');
@@ -134,7 +153,11 @@ function LoginPage(): JSX.Element {
           }
         } catch (error: any) {
           /* istanbul ignore next */
-          if (error.message) {
+          if (error.message === 'Failed to fetch') {
+            toast.warn(
+              'Talawa-API service is unavailable. Is it running? Check your network connectivity too.'
+            );
+          } else if (error.message) {
             toast.warn(error.message);
           } else {
             toast.error('Something went wrong, Please try after sometime.');
@@ -155,7 +178,6 @@ function LoginPage(): JSX.Element {
     recaptchaRef.current?.reset();
 
     const isVerified = await verifyRecaptcha(recaptchaToken);
-
     /* istanbul ignore next */
     if (!isVerified) {
       toast.error('Please, check the captcha.');
@@ -192,7 +214,11 @@ function LoginPage(): JSX.Element {
       }
     } catch (error: any) {
       /* istanbul ignore next */
-      if (error.message) {
+      if (error.message == 'Failed to fetch') {
+        toast.warn(
+          'Talawa-API service is unavailable. Is it running? Check your network connectivity too.'
+        );
+      } else if (error.message) {
         toast.warn(error.message);
       } else {
         toast.error('Something went wrong, Please try after sometime.');
